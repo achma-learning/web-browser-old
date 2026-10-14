@@ -1,2 +1,4 @@
-# Auto detect text files and perform LF normalization
-* text=auto
+# Store every file byte-for-byte, exactly as the official PortableApps.com installer
+# extracts it (some files CRLF, some LF, ~250 binaries). No line-ending conversion,
+# so a clone on any OS is identical to a fresh install.
+* -text
