@@ -18,7 +18,7 @@ _Changes since the package import (`ad5c169`). Not launch-tested on Windows yet:
 ### Added
 - Hardening config `mozilla.cfg` + `defaults/pref/autoconfig.js` in `App/Firefox` and `App/Firefox64`: Firefox now reads one settings file at startup. `(172cc22)` ✅ verified (172cc22): `node --check` passes; every pref name checked against FF52's `greprefs.js`/`firefox.js`.
 - `.gitignore` that keeps `FirefoxPortableLegacy52/Data/` (the live profile) out of git. `(172cc22)`
-- Docs for humans and AI: `CONTEXT.md`, `CHANGELOG.md`, `TRAJECTORY.md`, rewritten `README.md`. `(DOCS_SHA)`
+- Docs for humans and AI: `CONTEXT.md`, `CHANGELOG.md`, `TRAJECTORY.md`, rewritten `README.md`. `(64c8c1b)`
 
 ### Changed
 - **Breaking:** `FirefoxPortableLegacy52/Data/` is no longer tracked. Pulling `172cc22` over an older checkout deletes it from disk; back it up first, or restore with `git checkout ad5c169 -- FirefoxPortableLegacy52/Data`. `(172cc22)`

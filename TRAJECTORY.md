@@ -40,7 +40,7 @@ Keep this repo **"a old version, but hardened and stable"** (chat): Firefox 52.9
 - [x] **T004** — Punycode IDNs + WebRTC IP-leak protection · `(172cc22)`
 - [x] **T005** — `.gitattributes`: explicit binaries, CRLF for Windows text · `(172cc22)`
 - [x] **T006** — Correct the "example only, not used" comment in the active `FirefoxPortable.ini` · `(172cc22)`
-- [x] **T007** — `CONTEXT.md`, `CHANGELOG.md`, `TRAJECTORY.md`, `README.md` · `(DOCS_SHA)`
+- [x] **T007** — `CONTEXT.md`, `CHANGELOG.md`, `TRAJECTORY.md`, `README.md` · `(64c8c1b)`
 
 ## ❌ Won't Do
 - **T008** — Upgrade Firefox past 52.9.0 — why not: the request is to keep it an old version · `(chat)`
