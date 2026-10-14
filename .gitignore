@@ -1,0 +1,7 @@
+# Per-user browser data (profile = cookies, history, logins, sessions; settings; plugins).
+# The launcher rebuilds it from App/DefaultData/ on first run. Never commit it.
+FirefoxPortableLegacy52/Data/
+
+# Temporary copy made by RunLocally=true, and Windows litter.
+Thumbs.db
+desktop.ini

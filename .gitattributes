@@ -1,2 +1,30 @@
-# Auto detect text files and perform LF normalization
+# Default: let git detect text files and normalize them to LF in the repo.
 * text=auto
+
+# Windows-side text (INI, NSIS, Mozilla prefs, help pages) is checked out with CRLF,
+# so a copy taken from a Linux/macOS clone still behaves like the original Windows package.
+*.ini  text eol=crlf
+*.nsi  text eol=crlf
+*.nsh  text eol=crlf
+*.txt  text eol=crlf
+*.html text eol=crlf
+*.cfg  text eol=crlf
+*.js   text eol=crlf
+
+# Binaries: never touch line endings, never diff. (The app is ~200 MB of these.)
+*.exe     binary
+*.dll     binary
+*.lib     binary
+*.tlb     binary
+*.ja      binary
+*.xpi     binary
+*.bin     binary
+*.chk     binary
+*.ico     binary
+*.png     binary
+*.jpg     binary
+*.ttf     binary
+*.sqlite  binary
+*.mozlz4  binary
+*.dat     binary
+*.db      binary
