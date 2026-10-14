@@ -1,6 +1,6 @@
 # web-browser-old
 
-> Firefox 52 (the 2018 one) in a folder you can carry on a USB stick, set up so it never updates itself and doesn't phone home to services that died years ago.
+> A fresh, never-used copy of portable Firefox 52 (the 2018 one) for Windows, locked so it never updates and tightened as far as settings allow for browsing the internet.
 
 **Quick start:** 1. Download or clone this repo · 2. Double-click `FirefoxPortableLegacy52\FirefoxPortable.exe` · 3. Firefox 52.9.0 ESR opens with a fresh, empty profile.
 
@@ -8,17 +8,19 @@ _TODO: add a screenshot of Help → About showing 52.9.0 ESR with no update butt
 
 ## What it is
 
-This is the PortableApps.com **Firefox Portable Legacy 52** package (Firefox **52.9.0 ESR**, Windows, 32- and 64-bit). It's frozen on purpose and hardened with one settings file. Firefox 52 is the last version that still runs old XUL add-ons and NPAPI plugins (e.g. Java applets). Some ancient admin pages and intranet sites still need those.
+This is the PortableApps.com **Firefox Portable Legacy 52** package (Firefox **52.9.0 ESR**, Windows, 32- and 64-bit). Every file matches a fresh install from the official `FirefoxPortableLegacy52_52.9.0_English.paf.exe`, checked byte by byte. The only addition is one settings file, `mozilla.cfg`, that hardens it:
 
-What makes it different from just downloading the old package:
-- **Updates are locked off.** One click on "update" used to replace it with a newer Firefox and kill every legacy add-on. Now it can't.
-- **Dead 2018 services are off**: telemetry, experiments, Pocket, new-tab tiles.
-- **A bit safer to browse with.** Look-alike domains show as `xn--…` punycode, and WebRTC doesn't leak your local IP.
-- **Your profile stays yours.** `Data/` (cookies, history, logins) is gitignored.
+- **Never updates.** It stays exactly 52.9.0; "update" is locked off.
+- **Modern HTTPS only.** TLS 1.2 or newer; old weak ciphers (3DES, DHE) are off. It also trusts certificates from the Windows store, because its own list is from 2018.
+- **Less to attack.** Plugins (Java, Silverlight), Flash, WebGL, WebAssembly and DRM are off. These are the usual ways into an old browser.
+- **Less tracking.** Tracking protection on, third-party cookies blocked, no prefetching.
+- **No phishing look-alikes or IP leaks.** Odd domains show as `xn--…`, and WebRTC hides your local IP.
+- **No phoning home.** Telemetry, experiments, Pocket and new-tab tiles are off.
+- **No personal data.** The profile folder `Data/` is created on first run and is gitignored.
 
 ## ⚠️ Read this first
 
-Firefox 52 has had **no security patches since June 2018**. Use it for the one legacy site or add-on that needs it, not as your everyday browser. Some modern HTTPS sites will fail with `SEC_ERROR_UNKNOWN_ISSUER` because its list of trusted certificates is from 2018.
+Firefox 52 has had **no security patches since June 2018**. The settings above shrink the risk; they can't remove it. Don't use it for banking or anything you can't afford to lose. Many modern sites will look broken: it's a 2018 engine, and WebGL/WebAssembly are off.
 
 ## Install & run
 
@@ -30,25 +32,27 @@ git clone https://github.com/achma-learning/web-browser-old.git
 #   web-browser-old\FirefoxPortableLegacy52\FirefoxPortable.exe
 ```
 
-No git? Use **Code → Download ZIP** on GitHub and unzip. Copy the `FirefoxPortableLegacy52` folder anywhere you like: a USB stick, `D:\Apps\`, wherever. Works with the PortableApps.com Platform too.
+No git? Use **Code → Download ZIP** on GitHub and unzip. Copy the `FirefoxPortableLegacy52` folder anywhere: a USB stick, `D:\Apps\`, wherever. Works with the PortableApps.com Platform too.
+
+On 64-bit Windows 7 or newer it runs the 64-bit build; otherwise the 32-bit one.
 
 > **Upgrading an older checkout (from before Oct 2026)?** Back up `FirefoxPortableLegacy52\Data\` before `git pull`. That folder is no longer tracked, so git deletes it on pull.
 
 ## Usage
 
 1. Run `FirefoxPortable.exe`. The first run creates `Data\profile\` from `App\DefaultData\`.
-2. Install the legacy add-on you need (`.xpi` → drag onto the window), or open the old site.
-3. Want to check the hardening? Open `about:config` and search `app.update.enabled`. It shows **locked** and `false`.
+2. Browse. To check the hardening, open `about:config` and search `app.update.enabled` (**locked**, `false`) or `security.tls.version.min` (`3`).
+3. A site really needs something that's off (e.g. WebGL)? Flip that one pref in `about:config` (`webgl.disabled` → `false`). Only `app.update.*` is locked.
 
-Launcher options (multiple instances, run-from-CD mode, 32/64-bit) live in `FirefoxPortableLegacy52\FirefoxPortable.ini`. Every option is explained in `Other\Source\Readme.txt`. Browser settings forced by this repo live in `App\Firefox\mozilla.cfg`.
+Want the 32-bit build always? Copy `Other\Source\FirefoxPortable.ini` next to `FirefoxPortable.exe` and set `AlwaysUse32Bit=true`. Every launcher option is explained in `Other\Source\Readme.txt`.
 
 ## What's new
 
-**2026-10-14** — stopped publishing the browser profile, locked updates off, switched off dead Mozilla services. [Full changelog →](./CHANGELOG.md)
+**2026-10-14** — now a byte-exact fresh install of the original v0 Firefox, hardened for internet use; personal data removed. [Full changelog →](./CHANGELOG.md)
 
 ## Why I built this
 
-Some things only work in an old browser. I wanted one copy of Firefox 52 that stays exactly that version, runs from anywhere, and is as safe as an unpatched 2018 browser can reasonably be.
+I wanted the exact Firefox from my v0 upload, clean, with none of my data in it, and as safe as an old browser can be made for going online.
 
 ## License
 
